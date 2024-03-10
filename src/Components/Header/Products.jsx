@@ -3,6 +3,20 @@ import { useState } from "react";
 import Product from "../Product/Product";
 
 const Products = () => {
+    const [cart, setCart] = useState([])
+    console.log(cart);
+    
+    const handleAddToCart = (product) => {
+        const newCart = [...cart, product];
+        setCart(newCart)
+    }
+
+    let total = 0;
+
+    for (const product of cart) {
+        total = product.price + total;
+    }
+
 
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -19,12 +33,16 @@ const Products = () => {
                         products.map(product => <Product
                             key={product.id}
                             product={product}
+                            handleAddToCart = {handleAddToCart}
+                            
                         ></Product>)
                     }
                 </div>
             </div>
             <div id="order-summary" className="w-1/5 bg-[#ff99004d] p-5 rounded">
                 <h1 className="text-center text-2xl font-semibold border-2 p-2 border-red-300 rounded-xl bg-slate-200">Order Summary</h1>
+                <p className="p-2">Selected Items: {cart.length}</p>
+                <p>Price: { total}</p>
             </div>
         </div>
     );

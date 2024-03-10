@@ -1,7 +1,7 @@
 
 
-const Product = ({ product }) => {
-    console.log(product);
+const Product = ({ product, handleAddToCart }) => {
+   
     const { image, title, category, price } = product
     return (
         <div>
@@ -11,7 +11,7 @@ const Product = ({ product }) => {
                     <h2 className="card-title">{category}</h2>
                     <p>Price: {price}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button onClick={()=>handleAddToCart(product)} className="btn btn-primary">Buy Now</button>
                     </div>
                 </div>
             </div>
