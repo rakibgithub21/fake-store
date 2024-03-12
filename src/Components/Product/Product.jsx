@@ -1,7 +1,7 @@
 
 
 const Product = ({ product, handleAddToCart }) => {
-    console.log(product);
+    // console.log(product);
    
     const { image, category, price,title } = product
     return (
